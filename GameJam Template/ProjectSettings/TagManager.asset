@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Collectable
+  - Hazard
+  - Interactable
   layers:
   - Default
   - TransparentFX

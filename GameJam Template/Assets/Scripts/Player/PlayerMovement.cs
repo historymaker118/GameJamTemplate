@@ -75,14 +75,10 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.tag == "Ground"){
-			isGrounded = true;
-		}
+		isGrounded = true;
 	}
 
 	void OnCollisionExit2D(Collision2D col){
-		if (col.gameObject.tag == "Ground"){
-			isGrounded = false;
-		}
+		isGrounded = false;
 	}
 }
