@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Interaction {
+public interface IHazard {
 
-	void ShowPrompt(bool showing);
-	void DoTheThing();
+	void DoTheThing(GameObject player);
+
 }

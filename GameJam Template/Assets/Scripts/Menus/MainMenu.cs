@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour {
 	public GameObject optionsMenu;
 	public GameObject scoreboard;
 
+	public Animator transition;
+
 	void Start () {
 		if (titlecard != null){
 			titlecard.SetActive(true);
@@ -26,7 +28,7 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	public void StartButton_Click(){
-		SceneManager.LoadSceneAsync("Main");
+		StartCoroutine(transitionScene(2f));
 	}
 
 	public void LoadButton_Click(){
@@ -76,5 +78,15 @@ public class MainMenu : MonoBehaviour {
 
 	public void QuitButton_Click(){
 		Application.Quit();
+	}
+
+	private IEnumerator transitionScene(float duration){
+		transition.SetTrigger("FadeOut");
+		float elapsed = 0;
+		while (elapsed < duration){
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+		SceneManager.LoadSceneAsync("Main");
 	}
 }

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4358746293443296}
   - component: {fileID: 61046620700510040}
   - component: {fileID: 61334127339902390}
+  - component: {fileID: 114155954537593074}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Hazard
@@ -51,7 +52,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795329906149416}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -86,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d86e75b74f066054faa9413107e4bcdd, type: 3}
+  - {fileID: 2100000, guid: 3f91fe5c1c6186e498a82c2fe782a234, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,3 +164,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9240589, y: 0.6076946}
   m_EdgeRadius: 0
+--- !u!114 &114155954537593074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795329906149416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693bd16b75aecb040a2a1ea8f727ba3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 25
+  cameraShake: {fileID: 0}
+  screenshakeDuration: 0.25
+  screenshakeMagnitude: 0.5

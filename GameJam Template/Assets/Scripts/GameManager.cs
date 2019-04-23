@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
 	public GameObject pauseMenu;
 	public GameObject clock;
+	public Animator transition;
 
 	public static GameManager Instance;
 
@@ -42,5 +44,19 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void TriggerGameOver(){
+		StartCoroutine(transitionScene(2f));
+	}
+
+	private IEnumerator transitionScene(float duration){
+		transition.SetTrigger("FadeOut");
+		float elapsed = 0;
+		while (elapsed < duration){
+			elapsed += Time.deltaTime;
+			yield return null;
+		}
+		SceneManager.LoadSceneAsync("GameOver");
 	}
 }

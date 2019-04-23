@@ -52,6 +52,7 @@ public class Timer : MonoBehaviour {
 			timer -= Time.deltaTime;
 		} else {
 			timer = 0;
+			GameManager.Instance.TriggerGameOver();
 		}
 		FormatTime();
 	}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SignInteraction : MonoBehaviour, Interaction {
+public class SignInteraction : MonoBehaviour, IInteractable {
 
 	public GameObject prompt;
 	public GameObject dialog;

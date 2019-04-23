@@ -8,7 +8,7 @@ public class PlayerState : MonoBehaviour {
 	public Image healthbar;
 	public float healthMax;
 	public Text scoreText;
-	public ScreenShake cameraShake;
+
 
 	private int score;
 	private float health;
@@ -25,6 +25,7 @@ public class PlayerState : MonoBehaviour {
 		}
 		if (health <= 0){
 			health = 0;
+			GameManager.Instance.TriggerGameOver();
 		}
 		float healthPercent = health / healthMax;
 		if (healthbar != null){
@@ -36,19 +37,6 @@ public class PlayerState : MonoBehaviour {
 		score += amount;
 		if (scoreText != null){
 			scoreText.text = score.ToString();
-		}
-	}
-
-	public void OnTriggerEnter2D(Collider2D col){
-		switch (col.gameObject.tag){
-			case "Collectable":
-				UpdateScore(10);
-				Destroy(col.gameObject);
-				break;
-			case "Hazard":
-				UpdateHealth(-25);
-				StartCoroutine(cameraShake.Shake(0.25f, 0.5f));
-				break;
 		}
 	}
 }
