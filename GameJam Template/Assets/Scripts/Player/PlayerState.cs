@@ -7,15 +7,11 @@ public class PlayerState : MonoBehaviour {
 
 	public Image healthbar;
 	public float healthMax;
-	public Text scoreText;
 
-
-	private int score;
 	private float health;
 
 	void Start () {
 		health = healthMax;
-		score = 0;
 	}
 
 	public void UpdateHealth(float amount){
@@ -30,13 +26,6 @@ public class PlayerState : MonoBehaviour {
 		float healthPercent = health / healthMax;
 		if (healthbar != null){
 			healthbar.fillAmount = healthPercent;
-		}
-	}
-
-	public void UpdateScore (int amount){
-		score += amount;
-		if (scoreText != null){
-			scoreText.text = score.ToString();
 		}
 	}
 }

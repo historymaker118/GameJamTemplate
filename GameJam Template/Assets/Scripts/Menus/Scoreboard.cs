@@ -12,6 +12,10 @@ public class Scoreboard : MonoBehaviour {
 	private List<Transform> scoreboardEntryTransformList;
 
 	private void Awake(){
+		LoadScores();
+	}
+
+	private void LoadScores(){
 		entryTemplate.gameObject.SetActive(false);
 
 		if (PlayerPrefs.HasKey("highscores")){
@@ -30,6 +34,10 @@ public class Scoreboard : MonoBehaviour {
 				new ScoreboardEntry {score = 2222, name = "Let"},
 				new ScoreboardEntry {score = 1111, name = "You"},
 			};
+			HighScores highscores = new HighScores { highscoreEntryList = scoreboardEntryList };
+			string json = JsonUtility.ToJson(highscores);
+			PlayerPrefs.SetString("highscores", json);
+			PlayerPrefs.Save();
 		}
 
 		for (int i=0; i<scoreboardEntryList.Count; i++){
@@ -43,8 +51,13 @@ public class Scoreboard : MonoBehaviour {
 		}
 
 		scoreboardEntryTransformList = new List<Transform>();
+		int scoreCount = 0;
 		foreach (ScoreboardEntry scoreEntry in scoreboardEntryList){
+			if (scoreCount >= 10){
+				return;
+			}
 			CreateScoreboardEntryTransform(scoreEntry, container, scoreboardEntryTransformList);
+			scoreCount ++;
 		}
 	}
 
@@ -60,13 +73,15 @@ public class Scoreboard : MonoBehaviour {
 		transformList.Add(entryTransform);
 	}
 
-	private void AddScoreboardEntry(int score, string name){
+	public void AddScoreboardEntry(int score, string name){
 		//Create scoreboard entry
 		ScoreboardEntry scoreboardEntry = new ScoreboardEntry { score = score, name = name };
 
 		//Load saved highscores
 		string jsonString = PlayerPrefs.GetString("highscores");
 		HighScores highscores = JsonUtility.FromJson<HighScores>(jsonString);
+
+		Debug.Log("highscoreEntryList: " + JsonUtility.FromJson<HighScores>(jsonString));
 
 		//Add new entry to scores
 		highscores.highscoreEntryList.Add(scoreboardEntry);
@@ -75,6 +90,29 @@ public class Scoreboard : MonoBehaviour {
 		string json = JsonUtility.ToJson(highscores);
 		PlayerPrefs.SetString("highscores", json);
 		PlayerPrefs.Save();
+
+		foreach (Transform scoreboardEntryTransform in scoreboardEntryTransformList){
+			GameObject.Destroy(scoreboardEntryTransform.gameObject);
+		}
+
+		LoadScores();
+	}
+
+	public bool CheckHighscore(int score){
+		//sort existing highscores
+		for (int i=0; i<scoreboardEntryList.Count; i++){
+			for (int j=i+1; j<scoreboardEntryList.Count; j++){
+				if (scoreboardEntryList[j].score > scoreboardEntryList[i].score){
+					var tmp = scoreboardEntryList[i];
+					scoreboardEntryList[i] = scoreboardEntryList[j];
+					scoreboardEntryList[j] = tmp;
+				}
+			}
+		}
+		if (scoreboardEntryList.Count < 10){
+			return true;
+		}
+		return (score > scoreboardEntryList[9].score);
 	}
 
 	private class HighScores {

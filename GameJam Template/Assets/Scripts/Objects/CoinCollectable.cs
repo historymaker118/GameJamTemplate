@@ -6,8 +6,16 @@ public class CoinCollectable : MonoBehaviour, ICollectable {
 
 	public int scoreValue;
 
+	private Scorekeeper scorekeeper;
+
+	void Start(){
+		scorekeeper = (Scorekeeper)GameObject.FindObjectOfType(typeof(Scorekeeper));
+	}
+
 	public void DoTheThing(GameObject player){
 		var playerState = player.GetComponent<PlayerState>();
-		playerState.UpdateScore(scoreValue);
+		if (scorekeeper != null){
+			scorekeeper.UpdateScore(scoreValue);
+		}
 	}
 }
