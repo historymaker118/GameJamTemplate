@@ -12,7 +12,7 @@ public class Scoreboard : MonoBehaviour {
 	private List<Transform> scoreboardEntryTransformList;
 
 	private void Awake(){
-		LoadScores();
+		ReloadScoreboard();
 	}
 
 	private void LoadScores(){
@@ -81,8 +81,6 @@ public class Scoreboard : MonoBehaviour {
 		string jsonString = PlayerPrefs.GetString("highscores");
 		HighScores highscores = JsonUtility.FromJson<HighScores>(jsonString);
 
-		Debug.Log("highscoreEntryList: " + JsonUtility.FromJson<HighScores>(jsonString));
-
 		//Add new entry to scores
 		highscores.highscoreEntryList.Add(scoreboardEntry);
 
@@ -95,6 +93,15 @@ public class Scoreboard : MonoBehaviour {
 			GameObject.Destroy(scoreboardEntryTransform.gameObject);
 		}
 
+		LoadScores();
+	}
+
+	public void ReloadScoreboard(){
+		if (scoreboardEntryTransformList != null){
+			foreach (Transform scoreboardEntryTransform in scoreboardEntryTransformList){
+				GameObject.Destroy(scoreboardEntryTransform.gameObject);
+			}
+		}
 		LoadScores();
 	}
 
