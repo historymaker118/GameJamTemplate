@@ -30,6 +30,9 @@ public class GameOverMenu : MonoBehaviour {
 	}
 
 	public void OnPlayerNameEntered(){
+		if (playerName.text == ""){
+			playerName.text = "Player";
+		}
 		Debug.Log("Score: "+finalScore + ", PlayerName: " + playerName.text);
 		scoreboard.AddScoreboardEntry(finalScore, playerName.text);
 	}

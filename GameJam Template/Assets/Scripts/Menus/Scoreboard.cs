@@ -96,7 +96,7 @@ public class Scoreboard : MonoBehaviour {
 		LoadScores();
 	}
 
-	public void ReloadScoreboard(){
+	private void ReloadScoreboard(){
 		if (scoreboardEntryTransformList != null){
 			foreach (Transform scoreboardEntryTransform in scoreboardEntryTransformList){
 				GameObject.Destroy(scoreboardEntryTransform.gameObject);
@@ -106,6 +106,12 @@ public class Scoreboard : MonoBehaviour {
 	}
 
 	public bool CheckHighscore(int score){
+		if (score <= 0){
+			return false;
+		}
+		if (scoreboardEntryList.Count < 10){
+			return true;
+		}
 		//sort existing highscores
 		for (int i=0; i<scoreboardEntryList.Count; i++){
 			for (int j=i+1; j<scoreboardEntryList.Count; j++){
@@ -116,10 +122,13 @@ public class Scoreboard : MonoBehaviour {
 				}
 			}
 		}
-		if (scoreboardEntryList.Count < 10){
-			return true;
-		}
 		return (score > scoreboardEntryList[9].score);
+	}
+
+	public void ResetScoreboard(){
+		PlayerPrefs.DeleteKey("highscores");
+		PlayerPrefs.Save();
+		ReloadScoreboard();
 	}
 
 	private class HighScores {

@@ -8,7 +8,6 @@ public class OptionsMenu : MonoBehaviour {
 
 	public AudioMixer mixer;
 	public Dropdown resolutionDropdown;
-	public Scoreboard scoreboard;
 
 	private Resolution[] resolutions;
 
@@ -57,13 +56,5 @@ public class OptionsMenu : MonoBehaviour {
 	public void SetResolution(int resolutionIndex){
 		Resolution res = resolutions[resolutionIndex];
 		Screen.SetResolution(res.width, res.height, Screen.fullScreen);
-	}
-
-	public void ResetScoreboard(){
-		PlayerPrefs.DeleteKey("highscores");
-		PlayerPrefs.Save();
-		if (scoreboard != null){
-			scoreboard.ReloadScoreboard();
-		}
 	}
 }
