@@ -1,4 +1,7 @@
 # GameJamTemplate
+
+![](GJTemplate.png)
+
 A simple unity project set up for quick and easy game-jamming.
 
 Contains three basic scenes with UI elements and transitions, plus an additional scene ready for testing model scale, particle effects, or other stand-alone things you plan to make a prefab of.
