@@ -42,7 +42,7 @@ I did, so I’ve put together a simple unity project to work as a base template 
 
 Make a game!
 
-But seriously, don't just download this, do nothing to change or improve the project, and then pass it off as yours. See this asa a foundation you can use to build off, or just as a handy reference for those basic features that the vast majority of games have in some form or another. Don't upload this to the asset store and try to make money off it.
+But seriously, don't just download this, do nothing to change or improve the project, and then pass it off as yours. See this as a foundation you can use to build off, or just as a handy reference for those basic features that the vast majority of games have in some form or another. Don't upload this to the asset store and try to make money off it.
 
 If you have any suggestions, bug reports, or just want to say 'hey thanks for this, it helped me make my game' drop me a message and I'll make sure I read it and try to address your points. And if you did make a game with this, it would be so awesome to play it - that's what this project exists for after all.
 
@@ -56,6 +56,7 @@ There are still features I want to make sure this game has going forward which I
 * Inventory system
 * Hotbar
 * Dialog system
+* Day/Night cycles
 
 
 ## Good Luck, Have Fun
