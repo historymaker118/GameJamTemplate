@@ -8,12 +8,9 @@ A simple unity project set up for quick and easy game-jamming.
 
 *Fed up with spending hours during game jam implementing things you know you’ve already done in every project before?*
 
-
 *Getting close to the deadline and worrying about whether you should spend time polishing your mechanics, or implementing menu screens and audio options?*
 
-
 *Want a better alternative?*
-
 
 I did, so I’ve put together a simple unity project to work as a base template for pretty much any game jam game you can think of (that isn’t networked multiplayer - but seriously don’t even think about it when you’ve got less than 72 hours!).
 
@@ -37,6 +34,10 @@ I did, so I’ve put together a simple unity project to work as a base template 
   * Simple prototyping assets for all of the above
 * In game pause menu
 * Minimap
+* Camera Shake
+* A handful of free models to use as placeholders while you prototype.
+
+Everything has been designed to be as modular as possible, with prefabs you can drag and drop into your scenes, with minimal dependancy between objects. Don’t need something? Just delete it.
  
 # What can you do with it?
 
