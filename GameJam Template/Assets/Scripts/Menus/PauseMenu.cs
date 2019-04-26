@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour {
 
 	void Update(){
 		if (Input.GetButtonDown("Cancel")){
+			
 			isMenuShowing = !isMenuShowing;
 			GameManager.Instance.PauseGame(isMenuShowing);
 			pauseUI.SetActive(isMenuShowing);
