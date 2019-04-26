@@ -38,7 +38,7 @@ I did, so I’ve put together a simple unity project to work as a base template 
 * In game pause menu
 * Minimap
  
-# What can I do with it?
+# What can you do with it?
 
 Make a game!
 
