@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-	public GameObject pauseMenu;
 	public GameObject clock;
 	public Animator transition;
 
@@ -21,27 +20,19 @@ public class GameManager : MonoBehaviour {
 		if (Instance == null){
 			Instance = this;
 		}
-		if (pauseMenu != null){
-			pauseMenu.SetActive(false);
-		}
 		if (clock != null){
 			clock.GetComponent<Timer>().StartClock();
 		}
 		IsGameRunning = true;
 	}
 
-	void Update () {
-		if (pauseMenu != null){
-			if (Input.GetButtonDown("Cancel")){
-				IsGameRunning = !IsGameRunning;
-				pauseMenu.SetActive(!IsGameRunning);
-				if (clock != null){
-					if (!IsGameRunning) {
-						clock.GetComponent<Timer>().StopClock();
-					} else {
-						clock.GetComponent<Timer>().StartClock();
-					}
-				}
+	public void PauseGame(bool isPaused){
+		IsGameRunning = !isPaused;
+		if (clock != null){
+			if (!IsGameRunning) {
+				clock.GetComponent<Timer>().StopClock();
+			} else {
+				clock.GetComponent<Timer>().StartClock();
 			}
 		}
 	}
